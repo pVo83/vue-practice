@@ -1,0 +1,16 @@
+{
+  "stylelint.validate": ["css", "scss", "vue"],
+  "stylelint.enable": true,
+  "stylelint.configFile": ".stylelintrc.json",
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": "explicit"
+  },
+  "files.associations": {
+    "*.vue": "vue"
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}

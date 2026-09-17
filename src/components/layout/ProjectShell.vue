@@ -2,7 +2,7 @@
   <main class="project-shell">
     <div class="container">
       <div class="project-shell__head">
-        <RouterLink class="project-shell__back" :to="{ name: 'home' }">← К списку</RouterLink>
+        <RouterLink class="project-shell__back" :to="{ name: 'tasks' }">← К списку</RouterLink>
         <h1 class="project-shell__title">{{ project.title }}</h1>
         <p class="project-shell__desc">{{ project.description }}</p>
         <ul class="project-shell__skills" aria-label="Навыки">
@@ -12,11 +12,8 @@
         </ul>
       </div>
 
-      <section class="project-shell__workspace" aria-labelledby="project-workspace-title">
-        <h2 id="project-workspace-title" class="project-shell__workspace-title">Демо</h2>
-        <div class="project-shell__canvas">
-          <slot />
-        </div>
+      <section class="project-shell__workspace" aria-label="Демо">
+        <slot />
       </section>
     </div>
   </main>
@@ -77,20 +74,6 @@ defineProps({
     background: var(--surface);
     color: var(--text);
     font-size: var(--ff-small);
-  }
-
-  &__workspace-title {
-    margin-bottom: 12px;
-    font-size: var(--ff-h4);
-    font-weight: 600;
-  }
-
-  &__canvas {
-    padding: 24px;
-    border: 1px dashed var(--border);
-    border-radius: 12px;
-    background: var(--surface-soft);
-    min-height: 220px;
   }
 }
 </style>

@@ -1,6 +1,8 @@
 import { createRouter, createWebHashHistory } from "vue-router"
 
 import Home from "@/pages/Home.vue"
+import TasksPage from "@/pages/TasksPage.vue"
+import AboutPage from "@/pages/AboutPage.vue"
 import CounterPage from "@/pages/projects/CounterPage.vue"
 import ModalPage from "@/pages/projects/ModalPage.vue"
 import FormPage from "@/pages/projects/FormPage.vue"
@@ -20,6 +22,16 @@ const routes = [
     path: "/",
     name: "home",
     component: Home,
+  },
+  {
+    path: "/tasks",
+    name: "tasks",
+    component: TasksPage,
+  },
+  {
+    path: "/about",
+    name: "about",
+    component: AboutPage,
   },
   {
     path: "/projects/counter",

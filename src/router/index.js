@@ -12,6 +12,8 @@ import ToastPage from "@/pages/projects/ToastPage.vue"
 import PaginationPage from "@/pages/projects/PaginationPage.vue"
 import SearchFilterPage from "@/pages/projects/SearchFilterPage.vue"
 import FetchListPage from "@/pages/projects/FetchListPage.vue"
+import CatalogPage from "@/pages/projects/CatalogPage.vue"
+import CatalogItemPage from "@/pages/projects/CatalogItemPage.vue"
 
 const routes = [
   {
@@ -73,6 +75,16 @@ const routes = [
     path: "/projects/fetch-list",
     name: "project-fetch-list",
     component: FetchListPage,
+  },
+  {
+    path: "/projects/catalog",
+    name: "project-catalog",
+    component: CatalogPage,
+  },
+  {
+    path: "/projects/catalog/:id",
+    name: "project-catalog-item",
+    component: CatalogItemPage,
   },
 ]
 

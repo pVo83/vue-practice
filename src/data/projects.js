@@ -65,6 +65,12 @@ export const projects = [
     skills: ["async", "loading", "error", "axios"],
     description: "Fetch с состояниями loading / data / error / empty.",
   },
+  {
+    slug: "catalog",
+    title: "Каталог (useRoute / useRouter)",
+    skills: ["useRouter", "useRoute", "params"],
+    description: "Список → push с id. Карточка читает id из URL через useRoute.",
+  },
 ]
 
 export function getProjectBySlug(slug) {

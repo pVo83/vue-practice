@@ -12,9 +12,7 @@
 
       <section class="about__block" aria-labelledby="about-stack">
         <h2 id="about-stack" class="about__heading">Стек</h2>
-        <ul class="about__tags">
-          <li v-for="item in stack" :key="item" class="about__tag">{{ item }}</li>
-        </ul>
+        <TagList :items="stack" />
       </section>
 
       <section class="about__block" aria-labelledby="about-arch">
@@ -36,7 +34,9 @@
       <section class="about__cta">
         <RouterLink class="about__link" :to="{ name: 'tasks' }">
           Перейти к заданиям
-          <span aria-hidden="true">→</span>
+          <svg class="about__link-icon" width="16" height="16" aria-hidden="true">
+            <use href="#arrow-right" />
+          </svg>
         </RouterLink>
       </section>
     </div>
@@ -44,6 +44,8 @@
 </template>
 
 <script setup>
+import TagList from "@/components/ui/TagList.vue"
+
 const stack = ["Vue 3", "Composition API", "Vue Router", "Pinia", "Axios", "SCSS", "Vite"]
 
 const architecture = [
@@ -99,22 +101,6 @@ const learned = [
     font-weight: 600;
   }
 
-  &__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  &__tag {
-    padding: 8px 14px;
-    border: 1px solid var(--border-soft);
-    border-radius: 999px;
-    background: var(--surface-soft);
-    color: var(--text);
-    font-size: var(--ff-caption);
-    font-weight: 500;
-  }
-
   &__list {
     display: flex;
     flex-direction: column;
@@ -155,6 +141,10 @@ const learned = [
     &:hover {
       color: var(--accent);
     }
+  }
+
+  &__link-icon {
+    flex-shrink: 0;
   }
 }
 </style>

@@ -88,6 +88,69 @@
         <path d="M12 8h.01"></path>
       </symbol>
 
+      <symbol
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.75"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        viewBox="0 0 24 24"
+        id="arrow-right"
+      >
+        <path d="M5 12h14"></path>
+        <path d="m12 5 7 7-7 7"></path>
+      </symbol>
+
+      <symbol
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.75"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        viewBox="0 0 24 24"
+        id="arrow-left"
+      >
+        <path d="m12 19-7-7 7-7"></path>
+        <path d="M19 12H5"></path>
+      </symbol>
+
+      <symbol
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.75"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        viewBox="0 0 24 24"
+        id="clipboard-list"
+      >
+        <rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect>
+        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+        <path d="M12 11h4"></path>
+        <path d="M12 16h4"></path>
+        <path d="M8 11h.01"></path>
+        <path d="M8 16h.01"></path>
+      </symbol>
+
+      <symbol
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.75"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        viewBox="0 0 24 24"
+        id="graduation-cap"
+      >
+        <path
+          d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"
+        ></path>
+        <path d="M22 10v6"></path>
+        <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path>
+      </symbol>
+
       <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 20" id="vue">
         <g clip-path="url(#clip0_718_476)">
           <path d="M14.775 0L12 4.61818L9.225 0H0L12 20L24 0H14.775Z" fill="var(--accent)"></path>

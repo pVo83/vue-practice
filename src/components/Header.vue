@@ -14,6 +14,9 @@
           :to="{ name: 'tasks' }"
           active-class="header__link--active"
         >
+          <svg class="header__link-icon" width="16" height="16" aria-hidden="true">
+            <use href="#clipboard-list" />
+          </svg>
           Задания
         </RouterLink>
         <RouterLink
@@ -21,6 +24,9 @@
           :to="{ name: 'about' }"
           active-class="header__link--active"
         >
+          <svg class="header__link-icon" width="16" height="16" aria-hidden="true">
+            <use href="#info" />
+          </svg>
           О проекте
         </RouterLink>
       </nav>
@@ -66,6 +72,9 @@
   }
 
   &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     padding: 8px 12px;
     border-radius: 8px;
     color: var(--text-muted);
@@ -84,6 +93,10 @@
       background: var(--accent-soft);
       color: var(--accent-hover);
     }
+  }
+
+  &__link-icon {
+    flex-shrink: 0;
   }
 }
 </style>

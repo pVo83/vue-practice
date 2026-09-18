@@ -19,7 +19,9 @@
               </span>
               <span class="tasks__desc">{{ project.description }}</span>
             </span>
-            <span class="tasks__arrow" aria-hidden="true">→</span>
+            <svg class="tasks__arrow" width="18" height="18" aria-hidden="true">
+              <use href="#arrow-right" />
+            </svg>
           </RouterLink>
         </li>
       </ul>
@@ -117,9 +119,8 @@ import { projects } from "@/data/projects"
   }
 
   &__arrow {
+    flex-shrink: 0;
     color: var(--accent);
-    font-size: 18px;
-    line-height: 1;
   }
 }
 

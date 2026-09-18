@@ -2,7 +2,12 @@
   <main class="landing">
     <div class="container landing__container">
       <section class="landing__hero">
-        <span class="landing__badge">Vue 3 · Learning Project</span>
+        <span class="landing__badge">
+          <svg class="landing__badge-icon" width="14" height="14" aria-hidden="true">
+            <use href="#graduation-cap" />
+          </svg>
+          Vue 3 · Learning Project
+        </span>
         <h1 class="landing__title">Изучаю Vue 3. Пишу. Практикуюсь.</h1>
         <p class="landing__lead">
           Небольшие практические задания, которые помогают мне развиваться как Frontend
@@ -11,9 +16,14 @@
         <div class="landing__actions">
           <RouterLink class="landing__btn landing__btn--primary" :to="{ name: 'tasks' }">
             Смотреть задания
-            <span class="landing__btn-arrow" aria-hidden="true">→</span>
+            <svg class="landing__btn-icon" width="16" height="16" aria-hidden="true">
+              <use href="#arrow-right" />
+            </svg>
           </RouterLink>
           <RouterLink class="landing__btn landing__btn--secondary" :to="{ name: 'about' }">
+            <svg class="landing__btn-icon" width="16" height="16" aria-hidden="true">
+              <use href="#info" />
+            </svg>
             О проекте
           </RouterLink>
         </div>
@@ -21,15 +31,15 @@
 
       <section class="landing__skills" aria-labelledby="landing-skills-title">
         <h2 id="landing-skills-title" class="landing__skills-title">Что изучаю</h2>
-        <ul class="landing__skills-list">
-          <li v-for="skill in skills" :key="skill" class="landing__skill">{{ skill }}</li>
-        </ul>
+        <TagList :items="skills" />
       </section>
     </div>
   </main>
 </template>
 
 <script setup>
+import TagList from "@/components/ui/TagList.vue"
+
 const skills = ["Vue 3", "Composition API", "JavaScript", "SCSS"]
 </script>
 
@@ -57,6 +67,8 @@ const skills = ["Vue 3", "Composition API", "JavaScript", "SCSS"]
 
   &__badge {
     display: inline-flex;
+    align-items: center;
+    gap: 6px;
     margin-bottom: 20px;
     padding: 6px 12px;
     border-radius: 999px;
@@ -64,6 +76,10 @@ const skills = ["Vue 3", "Composition API", "JavaScript", "SCSS"]
     color: var(--accent-hover);
     font-size: var(--ff-small);
     font-weight: 600;
+  }
+
+  &__badge-icon {
+    flex-shrink: 0;
   }
 
   &__title {
@@ -125,9 +141,8 @@ const skills = ["Vue 3", "Composition API", "JavaScript", "SCSS"]
     }
   }
 
-  &__btn-arrow {
-    font-size: 16px;
-    line-height: 1;
+  &__btn-icon {
+    flex-shrink: 0;
   }
 
   &__skills-title {
@@ -137,22 +152,6 @@ const skills = ["Vue 3", "Composition API", "JavaScript", "SCSS"]
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-  }
-
-  &__skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  &__skill {
-    padding: 10px 16px;
-    border: 1px solid var(--border-soft);
-    border-radius: 12px;
-    background: var(--white);
-    color: var(--text);
-    font-size: var(--ff-caption);
-    font-weight: 500;
   }
 }
 

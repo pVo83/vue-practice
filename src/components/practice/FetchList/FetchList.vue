@@ -1,7 +1,10 @@
 <template>
   <div class="fetch-list">
     <span v-if="loading" class="fetch-list__loading">Загрузка...</span>
-    <span v-else-if="error" class="fetch-list__error">{{ error }}</span>
+    <template v-else-if="error">
+      <span class="fetch-list__error">{{ error }}</span>
+      <button class="fetch-list__btn" type="button" @click="retry">Повторить</button>
+    </template>
     <ul v-else-if="users.length" class="fetch-list__users">
       <li v-for="user in users" :key="user.id" class="fetch-list__item">
         {{ user.name }}
@@ -24,7 +27,10 @@ const loading = ref(true)
 const error = ref<string | null>(null)
 const users = ref<User[]>([])
 
-onMounted(async () => {
+async function loadUsers() {
+  loading.value = true
+  error.value = null
+
   try {
     const res = await API.getAll()
 
@@ -35,7 +41,13 @@ onMounted(async () => {
   } finally {
     loading.value = false
   }
-})
+}
+
+onMounted(loadUsers)
+
+function retry() {
+  loadUsers()
+}
 </script>
 
 <style lang="scss" scoped>
@@ -43,6 +55,7 @@ onMounted(async () => {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 8px;
   width: 100%;
   max-width: 420px;
   min-height: 220px;
@@ -75,6 +88,26 @@ onMounted(async () => {
     border-radius: 8px;
     background: var(--error-soft);
     color: var(--error);
+  }
+
+  &__btn {
+    width: fit-content;
+    height: 42px;
+    margin: 0 auto;
+    padding: 0 12px;
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    background-color: var(--accent);
+    color: var(--white);
+    cursor: pointer;
+    transition:
+      background-color var(--trs35),
+      border-color var(--trs35);
+
+    &:hover {
+      border-color: var(--accent-hover);
+      background-color: var(--accent-hover);
+    }
   }
 
   &__text {

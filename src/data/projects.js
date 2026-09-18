@@ -62,8 +62,8 @@ export const projects = [
   {
     slug: "fetch-list",
     title: "Загрузка списка (API)",
-    skills: ["async", "loading", "error", "axios"],
-    description: "Fetch с состояниями loading / data / error / empty.",
+    skills: ["async", "loading", "error", "retry", "axios"],
+    description: "Fetch с состояниями loading / data / error(+retry) / empty.",
   },
   {
     slug: "catalog",

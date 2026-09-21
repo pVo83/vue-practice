@@ -72,75 +72,23 @@
 </template>
 
 <script setup>
-import { computed, ref, watch } from "vue"
-import { EMAIL_REGEX, HAS_LETTER, HAS_DIGIT } from "@/composables/validation"
+import { ref } from "vue"
 
-const name = ref("")
-const email = ref("")
-const password = ref("")
+import { useFormValidation } from "@/composables/useFormValidation"
+
+const { name, email, password, submitted, errors, isValid, onBlur, validateAll, validateReset } =
+  useFormValidation()
+
 const error = ref("")
 const success = ref("")
 const loading = ref(false)
-const submitted = ref(false)
-
-const errors = ref({ name: "", email: "", password: "" })
-
-function validateName() {
-  if (!name.value.trim()) return "Поле 'Ваше имя' должно быть заполнено"
-  if (name.value.trim().length < 3) return "Имя: минимум 3 символа"
-  return ""
-}
-
-function validateEmail() {
-  if (!email.value.trim()) return "Поле 'Ваша почта' должно быть заполнено"
-  if (!EMAIL_REGEX.test(email.value.trim())) return "Некорректный email"
-  return ""
-}
-
-function validatePassword() {
-  if (!password.value.trim()) return "Поле 'Ваш пароль' должно быть заполнено"
-  if (password.value.length < 6) return "Пароль: минимум 6 символов"
-
-  if (!HAS_LETTER.test(password.value)) return "Пароль: нужна хотя бы одна буква"
-  if (!HAS_DIGIT.test(password.value)) return "Пароль: нужна хотя бы одна цифра"
-  return ""
-}
-
-const isValid = computed(() => !validateName() && !validateEmail() && !validatePassword())
-
-watch([name, email, password], () => {
-  errors.value = {
-    name: errors.value.name ? validateName() : "",
-    email: errors.value.email ? validateEmail() : "",
-    password: errors.value.password ? validatePassword() : "",
-  }
-})
-
-function onBlur(field) {
-  const validators = {
-    name: validateName,
-    email: validateEmail,
-    password: validatePassword,
-  }
-
-  errors.value = {
-    ...errors.value,
-    [field]: validators[field](),
-  }
-}
 
 async function submitForm() {
   submitted.value = true
   error.value = ""
   success.value = ""
 
-  errors.value = {
-    name: validateName(),
-    email: validateEmail(),
-    password: validatePassword(),
-  }
-
-  if (errors.value.name || errors.value.email || errors.value.password) {
+  if (!validateAll()) {
     return
   }
 
@@ -163,12 +111,7 @@ async function submitForm() {
       throw new Error("Ошибка регистрации")
     }
 
-    submitted.value = false
-    errors.value = { name: "", email: "", password: "" }
-    name.value = ""
-    email.value = ""
-    password.value = ""
-
+    validateReset()
     success.value = "Регистрация прошла успешно"
 
     setTimeout(() => {

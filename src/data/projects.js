@@ -71,6 +71,12 @@ export const projects = [
     skills: ["useRouter", "useRoute", "params"],
     description: "Список → push с id. Карточка читает id из URL через useRoute.",
   },
+  {
+    slug: "auth",
+    title: "Auth / роли",
+    skills: ["Pinia", "router guard", "roles"],
+    description: "Логин-заглушка, роли admin/user, скрытие UI и защита роута.",
+  },
 ]
 
 export function getProjectBySlug(slug) {

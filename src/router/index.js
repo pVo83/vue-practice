@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router"
+import { useAuth } from "@/components/practice/AuthDemo/store/useAuth"
 
 import Home from "@/pages/Home.vue"
 import TasksPage from "@/pages/TasksPage.vue"
@@ -16,6 +17,8 @@ import SearchFilterPage from "@/pages/projects/SearchFilterPage.vue"
 import FetchListPage from "@/pages/projects/FetchListPage.vue"
 import CatalogPage from "@/pages/projects/CatalogPage.vue"
 import CatalogItemPage from "@/pages/projects/CatalogItemPage.vue"
+import AuthPage from "@/pages/projects/AuthPage.vue"
+import AuthAdminPage from "@/pages/projects/AuthAdminPage.vue"
 
 const routes = [
   {
@@ -97,6 +100,25 @@ const routes = [
     path: "/projects/catalog/:id",
     name: "project-catalog-item",
     component: CatalogItemPage,
+  },
+  {
+    path: "/projects/auth",
+    name: "project-auth",
+    component: AuthPage,
+  },
+  {
+    path: "/projects/auth/admin",
+    name: "project-auth-admin",
+    component: AuthAdminPage,
+    beforeEnter(_to, _from, next) {
+      const auth = useAuth()
+
+      if (auth.isAdmin) {
+        next()
+      } else {
+        next({ name: "project-auth" })
+      }
+    },
   },
 ]
 

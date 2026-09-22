@@ -48,6 +48,12 @@ export function useTodos() {
   function removeTodo(todoId: number) {
     todos.value = todos.value.filter((todo) => todo.id !== todoId)
   }
+  function clearCompleted() {
+    todos.value = todos.value.filter((todo) => !todo.done)
+  }
+  function deleteAll() {
+    todos.value = []
+  }
 
   return {
     newTodoText,
@@ -56,5 +62,7 @@ export function useTodos() {
     todosFilter,
     addTodo,
     removeTodo,
+    clearCompleted,
+    deleteAll,
   }
 }

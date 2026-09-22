@@ -48,6 +48,24 @@
         </li>
       </ul>
       <span v-else class="todo__empty">Ничего не создано</span>
+
+      <button
+        v-if="filter === 'completed' && todosFilter.length"
+        type="button"
+        class="todo__btn-clear"
+        @click="clearCompleted"
+      >
+        Очистить выполненное
+      </button>
+
+      <button
+        v-if="filter === 'all' && todos.length"
+        type="button"
+        class="todo__btn-all"
+        @click="deleteAll"
+      >
+        Удалить все
+      </button>
     </div>
   </div>
 </template>
@@ -55,7 +73,7 @@
 <script setup>
 import { useTodos } from "@/components/practice/TodoList/composable/useTodos"
 
-const { newTodoText, filter, todos, todosFilter, addTodo, removeTodo } = useTodos()
+const { newTodoText, filter, todos, todosFilter, addTodo, removeTodo, clearCompleted, deleteAll } = useTodos()
 </script>
 
 <style lang="scss" scoped>
@@ -159,6 +177,12 @@ const { newTodoText, filter, todos, todosFilter, addTodo, removeTodo } = useTodo
     }
   }
 
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
   &__list {
     display: flex;
     flex-direction: column;
@@ -218,6 +242,32 @@ const { newTodoText, filter, todos, todosFilter, addTodo, removeTodo } = useTodo
     &:hover {
       background-color: var(--error);
       color: var(--white);
+    }
+  }
+
+  &__btn-all,
+  &__btn-clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    height: 36px;
+    padding: 0 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background-color: var(--surface);
+    color: var(--text);
+    font-size: var(--ff-caption);
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      background-color var(--trs35),
+      border-color var(--trs35),
+      color var(--trs35);
+
+    &:hover {
+      border-color: var(--error);
+      color: var(--error);
     }
   }
 

@@ -6,7 +6,7 @@
 ## Стек
 
 - Vue 3 (Composition API, `script setup`)
-- TypeScript (точечно: todo, fetch-list, counter)
+- TypeScript (точечно: todo, fetch-list)
 - Pinia, Vue Router
 - Axios
 - SCSS (BEM)
@@ -24,5 +24,7 @@ npm run dev
 - **Fetch list** — REST через axios, слой API, состояния loading / error / empty
 - **Toast** — очередь уведомлений, provide/inject, автозакрытие
 - **Modal** — Pinia, Teleport, Escape (composable)
+- **Catalog** — список → карточка, `useRouter` / `useRoute`, params
+- **Auth** — Pinia, роли admin/user, скрытие UI и защита роута
 
 Также: счётчик, форма, табы, аккордеон, dropdown, поиск/фильтр, пагинация.

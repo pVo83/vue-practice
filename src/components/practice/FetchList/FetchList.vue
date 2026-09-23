@@ -23,11 +23,13 @@ interface User {
   name: string
 }
 
-const loading = ref(true)
+const loading = ref(false)
 const error = ref<string | null>(null)
 const users = ref<User[]>([])
 
 async function loadUsers() {
+  if(loading.value) return
+
   loading.value = true
   error.value = null
 

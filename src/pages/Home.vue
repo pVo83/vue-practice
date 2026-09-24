@@ -2,16 +2,10 @@
   <main class="landing">
     <div class="container landing__container">
       <section class="landing__hero">
-        <span class="landing__badge">
-          <svg class="landing__badge-icon" width="14" height="14" aria-hidden="true">
-            <use href="#graduation-cap" />
-          </svg>
-          Vue 3 · Learning Project
-        </span>
+        <span class="landing__badge">Vue 3 · Learning Project</span>
         <h1 class="landing__title">Изучаю Vue 3. Пишу. Практикуюсь.</h1>
         <p class="landing__lead">
-          Небольшие практические задания, которые помогают мне развиваться как Frontend
-          Developer.
+          Небольшие практические задания, которые помогают мне развиваться как Frontend Developer.
         </p>
         <div class="landing__actions">
           <RouterLink class="landing__btn landing__btn--primary" :to="{ name: 'tasks' }">
@@ -21,17 +15,13 @@
             </svg>
           </RouterLink>
           <RouterLink class="landing__btn landing__btn--secondary" :to="{ name: 'about' }">
-            <svg class="landing__btn-icon" width="16" height="16" aria-hidden="true">
-              <use href="#info" />
-            </svg>
             О проекте
           </RouterLink>
         </div>
       </section>
-
       <section class="landing__skills" aria-labelledby="landing-skills-title">
         <h2 id="landing-skills-title" class="landing__skills-title">Что изучаю</h2>
-        <TagList :items="skills" />
+        <TagList :items="skills" variant="glass" />
       </section>
     </div>
   </main>
@@ -48,52 +38,53 @@ const skills = ["Vue 3", "Composition API", "JavaScript", "SCSS"]
   flex: 1;
   padding: 48px 0 64px;
   background:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgb(66 184 131 / 12%), transparent),
-    var(--surface);
+    linear-gradient(var(--landing-veil), var(--landing-veil)),
+    url("@/assets/img/landing-bg.png") center / cover no-repeat;
+  background-color: var(--surface);
 
   &__container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    width: min(100% - 30px, 520px);
+    transform: translate(-50%, -50%);
+    gap: 20px;
   }
 
   &__hero {
-    padding: 48px 40px;
-    border: 1px solid var(--border-soft);
-    border-radius: 24px;
-    background: var(--white);
-    box-shadow: 0 12px 40px var(--shadow);
+    padding: 36px 32px;
+    border: 1px solid var(--landing-border);
+    border-radius: 20px;
+    background: var(--landing-tile);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 24px var(--landing-shadow);
   }
 
   &__badge {
     display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     padding: 6px 12px;
     border-radius: 999px;
-    background: var(--accent-soft);
+    background: var(--accent-soft-alpha);
     color: var(--accent-hover);
     font-size: var(--ff-small);
     font-weight: 600;
   }
 
-  &__badge-icon {
-    flex-shrink: 0;
-  }
-
   &__title {
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     max-width: 16ch;
     color: var(--text);
-    font-size: clamp(28px, 4vw, 40px);
+    font-size: clamp(26px, 3.6vw, 36px);
     font-weight: 700;
     line-height: 1.15;
     letter-spacing: -0.02em;
   }
 
   &__lead {
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     max-width: 36rem;
     color: var(--text-muted);
     font-size: var(--ff-body);
@@ -130,8 +121,8 @@ const skills = ["Vue 3", "Composition API", "JavaScript", "SCSS"]
     }
 
     &--secondary {
-      border: 1px solid var(--border);
-      background: var(--white);
+      border: 1px solid var(--landing-border-strong);
+      background: var(--landing-fill);
       color: var(--text);
 
       &:hover {
@@ -146,7 +137,7 @@ const skills = ["Vue 3", "Composition API", "JavaScript", "SCSS"]
   }
 
   &__skills-title {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     color: var(--text-muted);
     font-size: var(--ff-small);
     font-weight: 600;
@@ -160,7 +151,7 @@ const skills = ["Vue 3", "Composition API", "JavaScript", "SCSS"]
     padding: 24px 0 40px;
 
     &__hero {
-      padding: 32px 20px;
+      padding: 28px 20px;
     }
 
     &__actions {

@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header" :class="{ 'header--overlay': isOverlay }">
     <div class="container header__inner">
       <RouterLink class="header__brand" :to="{ name: 'home' }">
         <svg class="header__logo" width="28" height="28" aria-hidden="true">
@@ -19,6 +19,7 @@
           </svg>
           Задания
         </RouterLink>
+
         <RouterLink
           class="header__link"
           :to="{ name: 'about' }"
@@ -34,11 +35,27 @@
   </header>
 </template>
 
+<script setup>
+import { computed } from "vue"
+import { useRoute } from "vue-router"
+
+const route = useRoute()
+const isOverlay = computed(() => route.name === "home")
+</script>
+
 <style lang="scss" scoped>
 .header {
-  border-bottom: 1px solid var(--border-soft);
+  z-index: 1;
+  width: 100%;
   padding: 16px 0;
   background: var(--white);
+  border-bottom: 1px solid var(--border-soft);
+
+  &--overlay {
+    position: absolute;
+    background: var(--header-overlay);
+    backdrop-filter: saturate(100%) blur(5px);
+  }
 
   &__inner {
     display: flex;

@@ -24,10 +24,20 @@
   --accent: #42b883;
   --accent-hover: #369870;
   --accent-soft: #f3faf7;
+  --accent-soft-alpha: rgb(66 184 131 / 12%);
   --warning: #e6a817;
   --warning-hover: #c9920f;
   --warning-bg: #fff8e6;
   --warning-text: #b8860b;
+  --header-overlay: rgb(255 255 255 / 30%);
+  --landing-veil: rgb(236 247 250 / 18%);
+  --landing-tile: rgb(232 244 247 / 58%);
+  --landing-tile-soft: rgb(232 244 247 / 48%);
+  --landing-border: rgb(255 255 255 / 65%);
+  --landing-border-soft: rgb(255 255 255 / 55%);
+  --landing-border-strong: rgb(255 255 255 / 80%);
+  --landing-fill: rgb(255 255 255 / 45%);
+  --landing-shadow: rgb(53 73 94 / 4%);
 
   // font-sizes
   --ff-h1: 32px;

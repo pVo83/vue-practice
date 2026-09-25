@@ -36,6 +36,8 @@
         </RouterLink>
       </nav>
 
+      <div v-if="isMenuOpen" class="header-overlay" @click="closeMenu" />
+
       <Transition name="header-nav">
         <nav
           v-if="isMenuOpen"
@@ -104,6 +106,7 @@ useNoScroll(isMenuOpen)
     position: absolute;
     background: var(--header-overlay);
     backdrop-filter: saturate(100%) blur(5px);
+    border-bottom-color: var(--landing-border);
   }
 
   &__inner {
@@ -250,6 +253,16 @@ useNoScroll(isMenuOpen)
     &__dropdown &__link {
       padding: 12px 14px;
     }
+  }
+
+  .header-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100dvh;
+    background-color: transparent;
   }
 }
 </style>

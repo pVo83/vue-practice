@@ -146,9 +146,18 @@ const skills = ["Vue 3", "Composition API", "JavaScript", "SCSS"]
   }
 }
 
-@media (width <= 640px) {
+@media (width <= 768px) {
   .landing {
-    padding: 24px 0 40px;
+    padding: 96px 0 40px;
+
+    &__container {
+      position: static;
+      top: auto;
+      left: auto;
+      width: min(100% - 30px, 520px);
+      margin-inline: auto;
+      transform: none;
+    }
 
     &__hero {
       padding: 28px 20px;

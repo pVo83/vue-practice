@@ -23,6 +23,21 @@
         stroke-linecap="round"
         stroke-linejoin="round"
         viewBox="0 0 24 24"
+        id="menu"
+      >
+        <path d="M4 5h16"></path>
+        <path d="M4 12h16"></path>
+        <path d="M4 19h16"></path>
+      </symbol>
+
+      <symbol
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.75"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        viewBox="0 0 24 24"
         id="face-smiling"
       >
         <path d="M15 10V9"></path>

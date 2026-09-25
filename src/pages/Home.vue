@@ -148,6 +148,8 @@ const skills = ["Vue 3", "Composition API", "JavaScript", "SCSS"]
 
 @media (width <= 768px) {
   .landing {
+    display: flex;
+    align-items: center;
     padding: 96px 0 40px;
 
     &__container {

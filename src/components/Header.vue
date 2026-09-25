@@ -68,6 +68,7 @@
 import { computed, ref, watch } from "vue"
 import { useRoute } from "vue-router"
 import { useNoScroll } from "@/composables/useNoScroll"
+import { useCloseOnBreakpoint } from "@/composables/useCloseOnBreakpoint"
 
 const route = useRoute()
 const isOverlay = computed(() => route.name === "home")
@@ -92,6 +93,7 @@ watch(
 )
 
 useNoScroll(isMenuOpen)
+useCloseOnBreakpoint(closeMenu)
 </script>
 
 <style lang="scss" scoped>

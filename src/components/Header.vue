@@ -232,7 +232,7 @@ useNoScroll(isMenuOpen)
     &--overlay &__dropdown {
       border-color: var(--landing-border);
       background: var(--header-menu);
-      box-shadow: 0 8px 24px var(--landing-shadow);
+      box-shadow: 0 8px 24px var(--header-menu-shadow);
     }
 
     &__toggle {

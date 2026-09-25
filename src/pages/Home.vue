@@ -154,7 +154,7 @@ const skills = ["Vue 3", "Composition API", "JavaScript", "SCSS"]
       position: static;
       top: auto;
       left: auto;
-      width: min(100% - 30px, 520px);
+      width: min(100% - 0px, 520px);
       margin-inline: auto;
       transform: none;
     }

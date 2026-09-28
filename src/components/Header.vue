@@ -76,6 +76,7 @@ const isMenuOpen = ref(false)
 
 const navItems = [
   { name: "tasks", label: "Задания", icon: "#clipboard-list" },
+  { name: "layouts", label: "Макеты", icon: "#graduation-cap" },
   { name: "about", label: "О проекте", icon: "#info" },
 ]
 

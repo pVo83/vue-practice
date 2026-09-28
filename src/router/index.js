@@ -4,6 +4,8 @@ import { useAuth } from "@/components/practice/AuthDemo/store/useAuth"
 import Home from "@/pages/Home.vue"
 import TasksPage from "@/pages/TasksPage.vue"
 import AboutPage from "@/pages/AboutPage.vue"
+import LayoutsPage from "@/pages/LayoutsPage.vue"
+import PamLayoutPage from "@/pages/layouts/PamLayoutPage.vue"
 import CounterPage from "@/pages/projects/CounterPage.vue"
 import ModalPage from "@/pages/projects/ModalPage.vue"
 import FormPage from "@/pages/projects/FormPage.vue"
@@ -35,6 +37,17 @@ const routes = [
     path: "/about",
     name: "about",
     component: AboutPage,
+  },
+  {
+    path: "/layouts",
+    name: "layouts",
+    component: LayoutsPage,
+  },
+  {
+    path: "/layouts/pam",
+    name: "layout-pam",
+    component: PamLayoutPage,
+    meta: { hideHeader: true },
   },
   {
     path: "/projects/counter",

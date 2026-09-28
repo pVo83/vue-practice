@@ -2,25 +2,25 @@ import { createRouter, createWebHashHistory } from "vue-router"
 import { useAuth } from "@/components/practice/AuthDemo/store/useAuth"
 
 import Home from "@/pages/Home.vue"
-import TasksPage from "@/pages/TasksPage.vue"
-import AboutPage from "@/pages/AboutPage.vue"
-import LayoutsPage from "@/pages/LayoutsPage.vue"
-import PamLayoutPage from "@/pages/layouts/PamLayoutPage.vue"
-import CounterPage from "@/pages/projects/CounterPage.vue"
-import ModalPage from "@/pages/projects/ModalPage.vue"
-import FormPage from "@/pages/projects/FormPage.vue"
-import TabsPage from "@/pages/projects/TabsPage.vue"
-import AccordionPage from "@/pages/projects/AccordionPage.vue"
-import TodoPage from "@/pages/projects/TodoPage.vue"
-import DropdownPage from "@/pages/projects/DropdownPage.vue"
-import ToastPage from "@/pages/projects/ToastPage.vue"
-import PaginationPage from "@/pages/projects/PaginationPage.vue"
-import SearchFilterPage from "@/pages/projects/SearchFilterPage.vue"
-import FetchListPage from "@/pages/projects/FetchListPage.vue"
-import CatalogPage from "@/pages/projects/CatalogPage.vue"
-import CatalogItemPage from "@/pages/projects/CatalogItemPage.vue"
-import AuthPage from "@/pages/projects/AuthPage.vue"
-import AuthAdminPage from "@/pages/projects/AuthAdminPage.vue"
+import Tasks from "@/pages/Tasks.vue"
+import About from "@/pages/About.vue"
+import Layouts from "@/pages/Layouts.vue"
+import Pam from "@/pages/Pam.vue"
+import Counter from "@/pages/projects/Counter.vue"
+import Modal from "@/pages/projects/Modal.vue"
+import Form from "@/pages/projects/Form.vue"
+import Tabs from "@/pages/projects/Tabs.vue"
+import Accordion from "@/pages/projects/Accordion.vue"
+import Todo from "@/pages/projects/Todo.vue"
+import Dropdown from "@/pages/projects/Dropdown.vue"
+import Toast from "@/pages/projects/Toast.vue"
+import Pagination from "@/pages/projects/Pagination.vue"
+import SearchFilter from "@/pages/projects/SearchFilter.vue"
+import FetchList from "@/pages/projects/FetchList.vue"
+import Catalog from "@/pages/projects/Catalog.vue"
+import CatalogItem from "@/pages/projects/CatalogItem.vue"
+import Auth from "@/pages/projects/Auth.vue"
+import AuthAdmin from "@/pages/projects/AuthAdmin.vue"
 
 const routes = [
   {
@@ -31,98 +31,98 @@ const routes = [
   {
     path: "/tasks",
     name: "tasks",
-    component: TasksPage,
+    component: Tasks,
   },
   {
     path: "/about",
     name: "about",
-    component: AboutPage,
+    component: About,
   },
   {
     path: "/layouts",
     name: "layouts",
-    component: LayoutsPage,
+    component: Layouts,
   },
   {
     path: "/layouts/pam",
     name: "layout-pam",
-    component: PamLayoutPage,
+    component: Pam,
     meta: { hideHeader: true },
   },
   {
     path: "/projects/counter",
     name: "project-counter",
-    component: CounterPage,
+    component: Counter,
   },
   {
     path: "/projects/modal",
     name: "project-modal",
-    component: ModalPage,
+    component: Modal,
   },
   {
     path: "/projects/form",
     name: "project-form",
-    component: FormPage,
+    component: Form,
   },
   {
     path: "/projects/tabs",
     name: "project-tabs",
-    component: TabsPage,
+    component: Tabs,
   },
   {
     path: "/projects/accordion",
     name: "project-accordion",
-    component: AccordionPage,
+    component: Accordion,
   },
   {
     path: "/projects/todo",
     name: "project-todo",
-    component: TodoPage,
+    component: Todo,
   },
   {
     path: "/projects/dropdown",
     name: "project-dropdown",
-    component: DropdownPage,
+    component: Dropdown,
   },
   {
     path: "/projects/toast",
     name: "project-toast",
-    component: ToastPage,
+    component: Toast,
   },
   {
     path: "/projects/pagination",
     name: "project-pagination",
-    component: PaginationPage,
+    component: Pagination,
   },
   {
     path: "/projects/search-filter",
     name: "project-search-filter",
-    component: SearchFilterPage,
+    component: SearchFilter,
   },
   {
     path: "/projects/fetch-list",
     name: "project-fetch-list",
-    component: FetchListPage,
+    component: FetchList,
   },
   {
     path: "/projects/catalog",
     name: "project-catalog",
-    component: CatalogPage,
+    component: Catalog,
   },
   {
     path: "/projects/catalog/:id",
     name: "project-catalog-item",
-    component: CatalogItemPage,
+    component: CatalogItem,
   },
   {
     path: "/projects/auth",
     name: "project-auth",
-    component: AuthPage,
+    component: Auth,
   },
   {
     path: "/projects/auth/admin",
     name: "project-auth-admin",
-    component: AuthAdminPage,
+    component: AuthAdmin,
     beforeEnter(_to, _from, next) {
       const auth = useAuth()
 

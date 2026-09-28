@@ -6,13 +6,18 @@
       </svg>
       К макетам
     </RouterLink>
-    <PamDemo />
+
+    <PamLayout v-slot="{ activeItem }">
+      <DashboardView :title="activeItem.label" />
+    </PamLayout>
   </div>
 </template>
 
 <script setup>
-import PamDemo from "@/components/layout/pam/PamDemo.vue"
+import PamLayout from "@/layouts/PamLayout.vue"
+import DashboardView from "@/components/pam/views/DashboardView.vue"
 </script>
+
 <style lang="scss" scoped>
 .pam-page {
   position: relative;

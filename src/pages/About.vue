@@ -51,7 +51,7 @@ const stack = ["Vue 3", "Composition API", "Vue Router", "Pinia", "Axios", "SCSS
 const architecture = [
   "Страницы в pages/, практики в components/practice/",
   "Данные заданий — единый список в data/projects.js",
-  "Общая оболочка задания — ProjectShell",
+  "Общая оболочка задания — ProjectLayout",
   "Логика вынесена в composables там, где повторяется",
 ]
 

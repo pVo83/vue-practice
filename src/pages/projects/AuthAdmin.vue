@@ -1,5 +1,5 @@
 <template>
-  <ProjectShell :project="project">
+  <ProjectLayout :project="project">
     <div class="auth-admin">
       <p class="auth-admin__badge">Только для админа</p>
       <p class="auth-admin__text">
@@ -12,12 +12,12 @@
         Назад к демо Auth
       </RouterLink>
     </div>
-  </ProjectShell>
+  </ProjectLayout>
 </template>
 
 <script setup>
 import { getProjectBySlug } from "@/data/projects"
-import ProjectShell from "@/components/layout/ProjectShell.vue"
+import ProjectLayout from "@/layouts/ProjectLayout.vue"
 
 const project = getProjectBySlug("auth")
 </script>

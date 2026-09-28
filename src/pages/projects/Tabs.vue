@@ -1,12 +1,12 @@
 <template>
-  <ProjectShell :project="project">
+  <ProjectLayout :project="project">
     <Tabs />
-  </ProjectShell>
+  </ProjectLayout>
 </template>
 
 <script setup>
 import { getProjectBySlug } from "@/data/projects"
-import ProjectShell from "@/components/layout/ProjectShell.vue"
+import ProjectLayout from "@/layouts/ProjectLayout.vue"
 import Tabs from "@/components/practice/Tabs/Tabs.vue"
 
 const project = getProjectBySlug("tabs")

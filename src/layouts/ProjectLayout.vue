@@ -1,19 +1,19 @@
 <template>
-  <main class="project-shell">
+  <main class="project-layout">
     <div class="container">
-      <div class="project-shell__head">
-        <RouterLink class="project-shell__back" :to="{ name: 'tasks' }">
-          <svg class="project-shell__back-icon" width="16" height="16" aria-hidden="true">
+      <div class="project-layout__head">
+        <RouterLink class="project-layout__back" :to="{ name: 'tasks' }">
+          <svg class="project-layout__back-icon" width="16" height="16" aria-hidden="true">
             <use href="#arrow-left" />
           </svg>
           К списку
         </RouterLink>
-        <h1 class="project-shell__title">{{ project.title }}</h1>
-        <p class="project-shell__desc">{{ project.description }}</p>
+        <h1 class="project-layout__title">{{ project.title }}</h1>
+        <p class="project-layout__desc">{{ project.description }}</p>
         <TagList :items="project.skills" aria-label="Навыки" />
       </div>
 
-      <section class="project-shell__workspace" aria-label="Демо">
+      <section class="project-layout__workspace" aria-label="Демо">
         <slot />
       </section>
     </div>
@@ -32,7 +32,7 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
-.project-shell {
+.project-layout {
   padding: 32px 0 64px;
 
   &__head {

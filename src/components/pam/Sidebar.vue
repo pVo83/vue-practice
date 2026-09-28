@@ -64,7 +64,7 @@
 </template>
 
 <script setup>
-import { navItems } from "../consts/nav"
+import { navItems } from "./consts/nav"
 
 defineProps({
   open: {

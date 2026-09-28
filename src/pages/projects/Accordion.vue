@@ -1,12 +1,12 @@
 <template>
-  <ProjectShell :project="project">
+  <ProjectLayout :project="project">
     <Accordion />
-  </ProjectShell>
+  </ProjectLayout>
 </template>
 
 <script setup>
 import { getProjectBySlug } from "@/data/projects"
-import ProjectShell from "@/components/layout/ProjectShell.vue"
+import ProjectLayout from "@/layouts/ProjectLayout.vue"
 import Accordion from "@/components/practice/Accordion/Accordion.vue"
 
 const project = getProjectBySlug("accordion")

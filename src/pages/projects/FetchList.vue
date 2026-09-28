@@ -1,12 +1,12 @@
 <template>
-  <ProjectShell :project="project">
+  <ProjectLayout :project="project">
     <FetchList />
-  </ProjectShell>
+  </ProjectLayout>
 </template>
 
 <script setup>
 import { getProjectBySlug } from "@/data/projects"
-import ProjectShell from "@/components/layout/ProjectShell.vue"
+import ProjectLayout from "@/layouts/ProjectLayout.vue"
 import FetchList from "@/components/practice/FetchList/FetchList.vue"
 
 const project = getProjectBySlug("fetch-list")

@@ -1,12 +1,12 @@
 <template>
-  <ProjectShell :project="project">
+  <ProjectLayout :project="project">
     <AuthDemo />
-  </ProjectShell>
+  </ProjectLayout>
 </template>
 
 <script setup>
 import { getProjectBySlug } from "@/data/projects"
-import ProjectShell from "@/components/layout/ProjectShell.vue"
+import ProjectLayout from "@/layouts/ProjectLayout.vue"
 import AuthDemo from "@/components/practice/AuthDemo/AuthDemo.vue"
 
 const project = getProjectBySlug("auth")

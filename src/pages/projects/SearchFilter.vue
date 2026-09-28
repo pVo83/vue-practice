@@ -1,12 +1,12 @@
 <template>
-  <ProjectShell :project="project">
+  <ProjectLayout :project="project">
     <SearchFilter />
-  </ProjectShell>
+  </ProjectLayout>
 </template>
 
 <script setup>
 import { getProjectBySlug } from "@/data/projects"
-import ProjectShell from "@/components/layout/ProjectShell.vue"
+import ProjectLayout from "@/layouts/ProjectLayout.vue"
 import SearchFilter from "@/components/practice/SearchFilter/SearchFilter.vue"
 
 const project = getProjectBySlug("search-filter")

@@ -2,18 +2,16 @@
   <aside
     id="pam-sidebar"
     class="pam-sidebar"
-    :class="{
-      'pam-sidebar--open': open,
-      'pam-sidebar--collapsed': collapsed,
-      'pam-sidebar--wide': wide,
-    }"
-    @transitionend="$emit('transitionend', $event)"
+    :class="{ 'pam-sidebar--collapsed': collapsed }"
   >
     <div class="pam-sidebar__brand">
       <svg class="pam-sidebar__brand-mark" width="38" height="38" aria-hidden="true">
         <use href="#vue" />
       </svg>
-      <span class="pam-sidebar__brand-title">Панель Администратора</span>
+      <div class="pam-sidebar__brand-text-wrap">
+        <span class="pam-sidebar__brand-text">Панель</span>
+        <span class="pam-sidebar__brand-text-bold">Администратора</span>
+      </div>
     </div>
 
     <nav class="pam-sidebar__nav" aria-label="Меню кабинета">
@@ -23,7 +21,7 @@
         class="pam-sidebar__nav-item"
         type="button"
         :class="{ 'pam-sidebar__nav-item--active': item.id === activeId }"
-        :title="collapsed && !wide ? item.label : undefined"
+        :title="collapsed ? item.label : undefined"
         @click="$emit('select', item.id)"
       >
         <svg class="pam-sidebar__nav-icon" width="20" height="20" aria-hidden="true">
@@ -67,15 +65,7 @@
 import { navItems } from "./consts/nav"
 
 defineProps({
-  open: {
-    type: Boolean,
-    default: false,
-  },
   collapsed: {
-    type: Boolean,
-    default: false,
-  },
-  wide: {
     type: Boolean,
     default: false,
   },
@@ -85,18 +75,14 @@ defineProps({
   },
 })
 
-defineEmits(["select", "toggle-collapse", "transitionend"])
+defineEmits(["select", "toggle-collapse"])
 </script>
 
 <style lang="scss" scoped>
 .pam-sidebar {
-  position: fixed;
-  top: 16px;
-  bottom: 16px;
-  left: 16px;
-  z-index: 50;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   width: var(--pam-current);
   padding: 24px 12px 12px;
   border-radius: 24px;
@@ -104,46 +90,21 @@ defineEmits(["select", "toggle-collapse", "transitionend"])
   box-shadow:
     5px 5px 10px color-mix(in srgb, var(--black) 7%, transparent),
     -2px -2px 6px #fff;
-  transition:
-    width var(--trs35),
-    box-shadow var(--trs35),
-    transform var(--trs35);
+  transition: width var(--trs35);
   overflow: hidden;
 
-  @media (width <= 1024px) {
-    transition:
-      box-shadow var(--trs35),
-      transform var(--trs35);
-    transform: translateX(calc(-100% - 32px));
-
-    &--open {
-      transform: translateX(0);
-      box-shadow:
-        0 10px 15px color-mix(in srgb, var(--black) 15%, transparent),
-        -2px -2px 6px color-mix(in srgb, var(--black) 5%, transparent);
-    }
-  }
-
-  &--wide {
-    @media (width <= 1024px) {
-      width: var(--pam-w);
-    }
-  }
-
-  &__brand-title,
+  &__brand-text,
+  &__brand-text-bold,
   &__nav-label,
   &__collapse-label {
+    white-space: nowrap;
     transition:
       opacity var(--trs35),
       transform var(--trs35);
   }
 
-  &__nav-label,
-  &__collapse-label {
-    white-space: nowrap;
-  }
-
-  &--collapsed &__brand-title,
+  &--collapsed &__brand-text,
+  &--collapsed &__brand-text-bold,
   &--collapsed &__nav-label,
   &--collapsed &__collapse-label {
     opacity: 0;
@@ -151,21 +112,11 @@ defineEmits(["select", "toggle-collapse", "transitionend"])
     pointer-events: none;
   }
 
-  &--wide &__brand-title,
-  &--wide &__nav-label,
-  &--wide &__collapse-label {
-    @media (width <= 1024px) {
-      opacity: 1;
-      transform: none;
-      pointer-events: auto;
-    }
-  }
-
   &__brand {
     display: flex;
     align-items: center;
     gap: 16px;
-    min-height: 40px;
+    min-height: 38px;
     margin-bottom: 24px;
     padding: 0 8px;
   }
@@ -174,12 +125,25 @@ defineEmits(["select", "toggle-collapse", "transitionend"])
     flex-shrink: 0;
   }
 
-  &__brand-title {
+  &__brand-text-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
     min-width: 0;
+  }
+
+  &__brand-text {
+    color: var(--text);
+    font-size: var(--ff-caption);
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  &__brand-text-bold {
     color: var(--text);
     font-size: var(--ff-caption);
     font-weight: 700;
-    line-height: 1.25;
+    line-height: 1;
   }
 
   &__nav {
@@ -249,13 +213,7 @@ defineEmits(["select", "toggle-collapse", "transitionend"])
     margin-top: auto;
     transition:
       background-color var(--trs35),
-      color var(--trs35),
-      opacity var(--trs35);
-
-    @media (width <= 1024px) {
-      opacity: 0;
-      pointer-events: none;
-    }
+      color var(--trs35);
   }
 
   &__collapse-icon {

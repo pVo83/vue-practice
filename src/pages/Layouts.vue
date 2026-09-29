@@ -3,14 +3,17 @@
     <div class="container">
       <section class="layouts__intro">
         <h1 class="layouts__title">Макеты</h1>
-        <p class="layouts__lead">
-          Страницы и каркасы UI: вёрстка, сетка, адаптив.
-        </p>
+        <p class="layouts__lead">Страницы и каркасы UI: вёрстка, сетка, адаптив.</p>
       </section>
 
       <ul class="layouts__list">
         <li v-for="(layout, index) in layouts" :key="layout.slug" class="layouts__item">
-          <RouterLink class="layouts__link" :to="`/layouts/${layout.slug}`">
+          <RouterLink
+            class="layouts__link"
+            :to="`/layouts/${layout.slug}`"
+            :target="layout.openInNewTab ? '_blank' : undefined"
+            :rel="layout.openInNewTab ? 'noopener noreferrer' : undefined"
+          >
             <span class="layouts__index">{{ String(index + 1).padStart(2, "0") }}</span>
             <span class="layouts__content">
               <span class="layouts__name">{{ layout.title }}</span>

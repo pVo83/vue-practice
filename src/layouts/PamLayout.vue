@@ -1,29 +1,20 @@
 <template>
-  <div
-    class="pam"
-    :class="{
-      'pam--collapsed': isCollapsed,
-      'pam--drawer-wide': isDrawerWide,
-    }"
-  >
-    <Transition name="fade">
-      <div v-if="isOpen" class="pam__overlay" aria-hidden="true" @click="closeSidebar" />
-    </Transition>
-
+  <div class="pam" :class="{ 'pam--collapsed': isCollapsed }">
     <Sidebar
-      :open="isOpen"
       :collapsed="isCollapsed"
-      :wide="isDrawerWide"
       :active-id="activeId"
       @select="selectNav"
       @toggle-collapse="toggleCollapse"
-      @transitionend="onSidebarTransitionEnd"
     />
 
     <div class="pam__body">
-      <Header :title="activeItem.label" :menu-open="isOpen" @toggle-menu="toggleSidebar" />
+      <Header />
 
       <main class="pam__main">
+        <header class="pam__page-head">
+          <h1 class="pam__page-title">{{ activeItem.label }}</h1>
+          <p class="pam__page-description">{{ activeItem.description }}</p>
+        </header>
         <slot :active-id="activeId" :active-item="activeItem" />
       </main>
     </div>
@@ -32,44 +23,16 @@
 
 <script setup>
 import { computed, ref } from "vue"
-import { useCloseOnEscape } from "@/composables/useCloseOnEscape"
-import { useNoScroll } from "@/composables/useNoScroll"
-import { useCloseOnBreakpoint } from "@/composables/useCloseOnBreakpoint"
 import { navItems } from "@/components/pam/consts/nav"
 import Header from "@/components/pam/Header.vue"
 import Sidebar from "@/components/pam/Sidebar.vue"
 
-const MOBILE_MAX = 1024
-
 const activeId = ref(navItems[0].id)
-const isOpen = ref(false)
 const isCollapsed = ref(false)
-/** Полный drawer: пока открыт и пока доигрывает transform при закрытии */
-const isDrawerWide = ref(false)
 
 const activeItem = computed(
   () => navItems.find((item) => item.id === activeId.value) ?? navItems[0],
 )
-
-function openSidebar() {
-  isDrawerWide.value = true
-  isOpen.value = true
-}
-
-function closeSidebar() {
-  isOpen.value = false
-  if (window.innerWidth > MOBILE_MAX) isDrawerWide.value = false
-}
-
-function toggleSidebar() {
-  if (isOpen.value) closeSidebar()
-  else openSidebar()
-}
-
-function onSidebarTransitionEnd(event) {
-  if (event.propertyName !== "transform") return
-  if (!isOpen.value) isDrawerWide.value = false
-}
 
 function toggleCollapse() {
   isCollapsed.value = !isCollapsed.value
@@ -77,14 +40,7 @@ function toggleCollapse() {
 
 function selectNav(id) {
   activeId.value = id
-  closeSidebar()
 }
-
-useNoScroll(isOpen)
-useCloseOnEscape(() => {
-  if (isOpen.value) closeSidebar()
-})
-useCloseOnBreakpoint(closeSidebar, MOBILE_MAX)
 </script>
 
 <style lang="scss" scoped>
@@ -95,6 +51,9 @@ useCloseOnBreakpoint(closeSidebar, MOBILE_MAX)
   --pam-current: var(--pam-w);
 
   box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  gap: var(--pam-gap);
   min-height: 100vh;
   padding: 16px;
   background: var(--surface);
@@ -103,41 +62,39 @@ useCloseOnBreakpoint(closeSidebar, MOBILE_MAX)
     --pam-current: var(--pam-w-sm);
   }
 
-  &__overlay {
-    position: fixed;
-    z-index: 40;
-    background: var(--overlay);
-    cursor: pointer;
-    inset: 0;
-  }
-
   &__body {
     display: flex;
+    flex: 1;
     flex-direction: column;
     min-width: 0;
-    min-height: calc(100vh - 32px);
-    transition: padding-inline-start var(--trs35);
-
-    @media (width >= 1025px) {
-      padding-inline-start: calc(var(--pam-current) + var(--pam-gap));
-    }
+    min-height: 0;
   }
 
   &__main {
     flex: 1;
     min-width: 0;
-    padding: 8px 0;
+    padding: 16px 0;
     overflow: hidden;
   }
-}
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity var(--trs35);
-}
+  &__page-head {
+    margin: 0 0 16px;
+  }
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+  &__page-title {
+    margin: 0 0 6px;
+    color: var(--text);
+    font-size: var(--ff-h3);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  &__page-description {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: var(--ff-caption);
+    font-weight: 400;
+    line-height: 1.45;
+  }
 }
 </style>

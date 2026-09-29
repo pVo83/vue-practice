@@ -1,6 +1,5 @@
 <template>
   <div class="pam-dashboard">
-    <p class="pam-dashboard__heading" aria-hidden="true">{{ title }}</p>
     <ul class="pam-dashboard__cards">
       <li v-for="card in cards" :key="card.label" class="pam-dashboard__card">
         <div class="pam-dashboard__card-main">
@@ -8,53 +7,32 @@
           <span class="pam-dashboard__card-value">{{ card.value }}</span>
           <span class="pam-dashboard__card-hint">{{ card.hint }}</span>
         </div>
-        <span
-          class="pam-dashboard__card-icon"
-          :class="`pam-dashboard__card-icon--${card.tone}`"
-          aria-hidden="true"
-        >
-          <svg width="18" height="18">
-            <use :href="card.icon" />
-          </svg>
-        </span>
+
+        <div class="pam-dashboard__card-aside" aria-hidden="true">
+          <span class="pam-dashboard__card-icon" :class="`pam-dashboard__card-icon--${card.tone}`">
+            <svg width="20" height="20">
+              <use :href="card.icon" />
+            </svg>
+          </span>
+          <SparkBars
+            v-if="card.spark?.length"
+            :values="card.spark"
+            :tone="card.tone"
+            :label="`${card.label}: динамика`"
+          />
+        </div>
       </li>
     </ul>
   </div>
 </template>
 
 <script setup>
+import SparkBars from "@/components/ui/SparkBars.vue"
 import { cards } from "../consts/cards"
-
-defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-})
 </script>
 
 <style lang="scss" scoped>
 .pam-dashboard {
-  &__heading {
-    margin: 0 0 16px;
-    color: var(--text);
-    font-size: var(--ff-h3);
-    font-weight: 600;
-    line-height: 1.2;
-    transition:
-      opacity var(--trs35),
-      transform var(--trs35);
-    transform: translateX(100px);
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-
-    @media (width <= 1024px) {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
   &__cards {
     display: grid;
     grid-template-columns: repeat(4, minmax(278px, 1fr));
@@ -69,7 +47,7 @@ defineProps({
   &__card {
     display: flex;
     justify-content: space-between;
-    gap: 12px;
+    gap: 16px;
     min-width: 0;
     padding: 16px;
     border: 1px solid var(--border-soft);
@@ -82,8 +60,18 @@ defineProps({
     display: flex;
     flex: 1;
     flex-direction: column;
+    justify-content: space-between;
     gap: 6px;
     min-width: 0;
+  }
+
+  &__card-aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    gap: 24px;
   }
 
   &__card-label {
@@ -109,9 +97,8 @@ defineProps({
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: 10px;
 
     &--success {

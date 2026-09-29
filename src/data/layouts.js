@@ -4,6 +4,7 @@ export const layouts = [
     title: "PAM",
     skills: ["SCSS", "BEM", "адаптив", "layout"],
     description: "Каркас кабинета: сайдбар, шапка, зона контента.",
+    openInNewTab: true,
   },
 ]
 

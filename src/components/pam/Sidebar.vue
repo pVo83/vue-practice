@@ -83,7 +83,9 @@ defineEmits(["select", "toggle-collapse"])
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  align-self: stretch;
   width: var(--pam-current);
+  min-height: 0;
   padding: 24px 12px 12px;
   border-radius: 24px;
   background: var(--white);

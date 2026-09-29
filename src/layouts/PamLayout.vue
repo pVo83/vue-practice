@@ -54,9 +54,13 @@ function selectNav(id) {
   display: flex;
   flex-direction: row;
   gap: var(--pam-gap);
-  min-height: 100vh;
+  width: 100%;
+  height: 100dvh;
+  max-height: 100dvh;
+  min-height: 0;
   padding: 16px;
   background: var(--surface);
+  overflow: hidden;
 
   &--collapsed {
     --pam-current: var(--pam-w-sm);
@@ -68,13 +72,16 @@ function selectNav(id) {
     flex-direction: column;
     min-width: 0;
     min-height: 0;
+    overflow: hidden;
   }
 
   &__main {
     flex: 1;
     min-width: 0;
+    min-height: 0;
     padding: 16px 0;
-    overflow: hidden;
+    overflow: auto;
+    overscroll-behavior: contain;
   }
 
   &__page-head {

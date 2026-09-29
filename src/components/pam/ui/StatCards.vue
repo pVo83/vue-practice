@@ -1,50 +1,55 @@
 <template>
-  <div class="pam-dashboard">
-    <ul class="pam-dashboard__cards">
-      <li v-for="card in cards" :key="card.label" class="pam-dashboard__card">
-        <div class="pam-dashboard__card-main">
-          <span class="pam-dashboard__card-label">{{ card.label }}</span>
-          <span class="pam-dashboard__card-value">{{ card.value }}</span>
-          <span class="pam-dashboard__card-hint">{{ card.hint }}</span>
-        </div>
+  <ul class="pam-stat-cards" role="list">
+    <li v-for="card in cards" :key="card.label" class="pam-stat-cards__item">
+      <div class="pam-stat-cards__main">
+        <span class="pam-stat-cards__label">{{ card.label }}</span>
+        <span class="pam-stat-cards__value">{{ card.value }}</span>
+        <span class="pam-stat-cards__hint">{{ card.hint }}</span>
+      </div>
 
-        <div class="pam-dashboard__card-aside" aria-hidden="true">
-          <span class="pam-dashboard__card-icon" :class="`pam-dashboard__card-icon--${card.tone}`">
-            <svg width="20" height="20">
-              <use :href="card.icon" />
-            </svg>
-          </span>
-          <SparkBars
-            v-if="card.spark?.length"
-            :values="card.spark"
-            :tone="card.tone"
-            :label="`${card.label}: динамика`"
-          />
-        </div>
-      </li>
-    </ul>
-  </div>
+      <div class="pam-stat-cards__aside" aria-hidden="true">
+        <span class="pam-stat-cards__icon" :class="`pam-stat-cards__icon--${card.tone}`">
+          <svg width="20" height="20">
+            <use :href="card.icon" />
+          </svg>
+        </span>
+        <SparkBars
+          v-if="card.spark?.length"
+          :values="card.spark"
+          :tone="card.tone"
+          :label="`${card.label}: динамика`"
+        />
+      </div>
+    </li>
+  </ul>
 </template>
 
 <script setup>
 import SparkBars from "@/components/ui/SparkBars.vue"
-import { cards } from "../consts/cards"
+
+defineProps({
+  cards: {
+    type: Array,
+    required: true,
+  },
+})
 </script>
 
 <style lang="scss" scoped>
-.pam-dashboard {
-  &__cards {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(278px, 1fr));
-    gap: 12px;
-    width: 100%;
-    min-width: 0;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
-  }
+.pam-stat-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(278px, 1fr));
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
 
-  &__card {
+  &__item {
     display: flex;
     justify-content: space-between;
     gap: 16px;
@@ -56,7 +61,7 @@ import { cards } from "../consts/cards"
     scroll-snap-align: start;
   }
 
-  &__card-main {
+  &__main {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -65,7 +70,7 @@ import { cards } from "../consts/cards"
     min-width: 0;
   }
 
-  &__card-aside {
+  &__aside {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,26 +79,26 @@ import { cards } from "../consts/cards"
     gap: 24px;
   }
 
-  &__card-label {
+  &__label {
     color: var(--text);
     font-size: var(--ff-caption);
     font-weight: 600;
   }
 
-  &__card-value {
+  &__value {
     color: var(--text);
     font-size: var(--ff-h2);
     font-weight: 700;
     line-height: 1.1;
   }
 
-  &__card-hint {
+  &__hint {
     color: var(--text-muted);
     font-size: var(--ff-small);
     line-height: 1.35;
   }
 
-  &__card-icon {
+  &__icon {
     display: flex;
     align-items: center;
     justify-content: center;

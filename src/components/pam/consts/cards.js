@@ -1,5 +1,6 @@
 export const cards = [
   {
+    id: 1,
     label: "Активные сессии",
     value: "1",
     hint: "SSH 1 · RDP 0 · DB 0",
@@ -8,6 +9,7 @@ export const cards = [
     tone: "success",
   },
   {
+    id: 2,
     label: "Запросы доступа",
     value: "0",
     hint: "Дольше часа: 0 · критичных: 0",
@@ -16,6 +18,7 @@ export const cards = [
     tone: "muted",
   },
   {
+    id: 3,
     label: "Проблемные ресурсы",
     value: "4",
     hint: "Офлайн 2 · Обслуживание 2",
@@ -24,6 +27,7 @@ export const cards = [
     tone: "danger",
   },
   {
+    id: 4,
     label: "Аудит",
     value: "22",
     hint: "Сегодня 5 · ошибок 3",

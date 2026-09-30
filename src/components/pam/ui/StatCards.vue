@@ -1,6 +1,6 @@
 <template>
   <ul class="pam-stat-cards" role="list">
-    <li v-for="card in cards" :key="card.label" class="pam-stat-cards__item">
+    <li v-for="card in cards" :key="card.id" class="pam-stat-cards__item">
       <div class="pam-stat-cards__main">
         <span class="pam-stat-cards__label">{{ card.label }}</span>
         <span class="pam-stat-cards__value">{{ card.value }}</span>

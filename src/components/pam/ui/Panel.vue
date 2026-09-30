@@ -101,6 +101,9 @@ defineProps({
     color: var(--text-muted);
     font-size: var(--ff-small);
     line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   &__link {
